@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Student Daily Schedule</title>
+    </head>
+<body>
+    <div class="app">
+        <aside class="side">
+            <div class="brand"> Student Daily Schedule<small>Plan • Track • Be Notified</small></div>
+            <nav class="nav">
+                <a class="active" href="#dashboard"> Dashboard</a>
+                <a href="#my-schedule"> My Schedule</a>
+                <a href="#add"> Add Schedule</a>
+                <a href="#reminders"> Notifications</a>
+                <a href="#settings"> Settings</a>
+            </nav>
+        </aside>
+        <main class="main">
+            <header class="top">
+                <h1>Student Daily Schedule</h1>
+                <button id="permission">Enable Notifications</button>
+            </header>
+            <div class="wrap" id="dashboard">
+                <section class="welcome">
+                    <h2>Welcome, Student!</h2>
+                    <p>Organize your day and get notified before your next activity.</p>
+                </section>
+                <section class="stats">
+                    <div class="stat">
+                        <span>Schedules Today</span>
+                        <strong id="todayCount">0</strong>
+                    </div><div class="stat">
+                        <span>Upcoming Activities</span><strong id="upcomingCount">0</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Next Reminder</span>
+                        <strong id="nextTime" style="font-size:18px">None</strong>
+                    </div></section>
+                    <div class="grid">
+                        <section class="panel" id="my-schedule">
+                            <h3>My Schedule</h3>
+                            <input class="search" id="search" placeholder="Search activity or location">
+                            <div id="list" class="empty">No schedules added yet.</div>
+                        </section><section class="panel" id="add">
+                            <h3>Add a Schedule</h3>
+                            <form id="scheduleForm" class="form-grid">
+                                <label class="full">Activity title<input id="title" required placeholder="e.g. Programming Class"></label>
+                                <label>Date<input id="date" type="date" required></label>
+                                <label>Start time<input id="time" type="time" required></label>
+                                <label>End time<input id="end" type="time"></label>
+                                <label>Location<input id="location" placeholder="e.g. Room 204"></label>
+                                <label class="full">Notes<textarea id="notes" rows="2"></textarea></label>
+                                <div class="full">
+                                    <button type="submit">Save Schedule</button>
+                                </div>
+                            </form>
+                        </section>
+                        <section class="panel" id="reminders">
+                            <h3>Upcoming Reminder</h3>
+                            <div id="nextCard" class="notice">Your next activity will appear here. Reminder is set for 15 minutes before it starts.</div>
+                        </section>
+                        <section class="panel">
+                            <h3>Notification information</h3>
+                            <p style="color:#6d7d94;line-height:1.6;font-size:13px">Allow browser notifications and keep this page open for reminder checks. Notifications may not appear when the browser or device is closed.</p>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div class="toast" id="toast"></div>
+    </body>
+    <style>
+        :root{
+            --blue:#1559c7;--navy:#12336b;--pale:#edf4ff;--bg:#f5f8fd;--ink:#182943;--muted:#6d7d94;--line:#dce5f2
+        }
+        *{
+            box-sizing:border-box
+        }
+        body{
+            margin:0;background:var(--bg);color:var(--ink);font:15px Arial,sans-serif
+        }
+        .app{
+            min-height:100vh;display:grid;grid-template-columns:225px 1fr
+        }
+        .side{
+            background:var(--navy);color:white;padding:24px 16px
+        }
+        .brand{
+            font-size:20px;font-weight:bold;margin:0 8px 34px
+        }
+        .brand small{
+            display:block;font-size:11px;font-weight:normal;color:#c9dcff;margin-top:5px
+        }
+        .nav a{
+            display:block;padding:13px 12px;color:#e8f1ff;text-decoration:none;border-radius:8px;margin:5px 0
+        }
+        .nav a.active,.nav a:hover{
+            background:#2469d2
+        }
+        .main{
+            min-width:0
+        }
+        .top{
+            background:white;border-bottom:1px solid var(--line);padding:17px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px
+        }
+        .top h1{
+            font-size:21px;margin:0;color:var(--navy)
+        }
+        button{
+            background:var(--blue);color:white;border:0;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:bold
+        }
+        .wrap{
+            max-width:1200px;margin:auto;padding:26px
+        }
+        .welcome h2{
+            margin:0 0 6px;font-size:25px
+        }
+        .welcome p{
+            color:var(--muted);margin:0
+        }
+        .stats{
+            display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0
+        }
+        .stat,.panel{
+            background:white;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 4px 14px #173b7010
+        }
+        .stat span{
+            color:var(--muted);font-size:13px
+        }
+        .stat strong{
+            display:block;font-size:27px;color:var(--blue);margin-top:7px
+        }
+        .grid{
+            display:grid;grid-template-columns:1.3fr .8fr;gap:16px
+        }
+        .panel h3{
+            margin:0 0 15px;color:var(--navy)
+        }
+        .schedule-item{
+            border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:8px;padding:12px;margin:9px 0;display:flex;justify-content:space-between;gap:10px;align-items:center
+        }
+        .schedule-item small{
+            display:block;color:var(--muted);margin-top:5px
+        }
+        .actions button{
+            border:1px solid var(--line);background:white;color:var(--blue);padding:6px 8px;margin-left:4px
+        }
+        .empty{
+            color:var(--muted);padding:12px 0
+        }
+        .form-grid{
+            display:grid;grid-template-columns:1fr 1fr;gap:10px
+            }
+        .form-grid label{
+            font-size:12px;color:var(--muted)
+        }
+        .form-grid input,.form-grid textarea{
+            width:100%;margin-top:5px;border:1px solid var(--line);border-radius:7px;padding:10px;font:14px Arial
+        }
+        .full{
+            grid-column:1/-1
+        }
+        .notice{
+            background:var(--pale);border:1px solid #cbdfff;color:#174b9a;border-radius:8px;padding:12px;font-size:13px;line-height:1.5
+        }
+        .toast{
+            position:fixed;right:20px;bottom:20px;background:var(--navy);color:white;padding:14px 18px;border-radius:9px;display:none
+        }
+        .search{
+            width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;margin-bottom:10px}@media(max-width:760px)
+            {
+            .app{grid-template-columns:1fr}
+            .side{padding:12px}
+            .brand{margin:0 5px 10px}
+            .nav{display:flex;overflow:auto}
+            .nav a{white-space:nowrap;margin:0 3px;padding:9px}
+            .top{padding:14px 16px}.wrap{padding:17px}
+            .grid{grid-template-columns:1fr}
+            .stats{grid-template-columns:1fr 1fr}
+            .form-grid{grid-template-columns:1fr}
+            .full{grid-column:auto}}        
+</style>
+<footer><p style="font-size:12px;color:#7180a3;text-align:center;margin:16px 0 0">@Student Daily Schedule</p></footer>
+</html>

@@ -3,10 +3,14 @@ PROJECT PROPOSAL
 Template Outlining:
 
 User Problem:
-    The most students are stressed in arranging daily or weekly scheds the main objective of the design is to proivide students with platform where they can create schedules, organize tasks, receive reminders, and monitor their daily scheds. 
+Students often keep class times, study sessions, and school commitments in separate notes, messaging apps, paper planners, or memory. This makes it difficult to see the whole day in one place. Students may overlook a class, forget a study session, or remember an activity only when it is about to begin. A centralized schedule with timely reminders can help students stay aware of their commitments and manage their time moer efficiently.
+
+ 
 
 Target Audience:
-    The target audience for the project are mostly studets.
+The primary target audience is students, the application is intended for students generally and will not be also limited trousers from different institution of the community, to teachers, parents and such any user who wants to organize a daily schedule may use it.
+
+    
 
 Aesthtic theme:
-    The design uses "Digital Navy Theme" utilizing the use of strong/light blue,white and light gray.
+The interface will use a blue and white academic theme. Navy blue will be used for navigation and headings, brighter blue for primary actions, white for content panels, and very light blue or gray for backgrounds. The layout will use readable typography, consistent spacing, simple icons, and responsive components.

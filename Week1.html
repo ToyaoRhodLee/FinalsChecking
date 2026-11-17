@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Student Daily Schedule</title>
+        <style>
+            * { 
+                box-sizing: border-box; 
+            }
+            body { 
+                font: 14px Arial; color: #222; margin: 0; background: white; 
+            }
+            .shell { 
+                display: grid; grid-template-columns: 190px 1fr; min-height: 100vh; 
+            }
+            .side { 
+                border: 2px solid #888; padding: 18px; 
+            }
+            .main { 
+                padding: 18px; 
+            }
+            .block { 
+                border: 2px solid #888; padding: 14px; margin-bottom: 14px; 
+            }
+            .row { 
+                display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; 
+            }
+            .two { 
+                display: grid; grid-template-columns: 1.3fr .7fr; gap: 12px; 
+            }
+            .placeholder { 
+                height: 42px; border: 1px solid #aaa; margin: 8px 0; padding: 12px; color: #555; 
+            }
+            .navitem { 
+                border: 1px solid #aaa; padding: 11px; margin: 8px 0; 
+            }
+            .line { 
+                height: 12px; background: #ddd; margin: 10px 0; width: 80%; 
+            }
+            .title { 
+                font-weight: bold; font-size: 18px; 
+            }
+            .button { display: inline-block; border: 1px solid #777; padding: 9px 16px; margin-top: 8px; }
+            @media (max-width: 650px) {
+                .shell, .row, .two {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .footer { 
+                font-size: 12px; color: #7180a3; text-align: center; margin: 16px 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="shell">
+            <aside class="side">
+                <div class="block title">Student Daily Schedule</div>
+                <div class="navitem">Dashboard</div>
+                <div class="navitem">My Schedule</div>
+                <div class="navitem">Add Schedule</div>
+                <div class="navitem">Notifications</div>
+                <div class="navitem">Settings</div>
+            </aside>
+            <main class="main">
+                <div class="block">
+                    <b>HEADER</b>
+                    <div class="placeholder">Search schedule...</div>
+                    <div class="placeholder">Notification icon / User profile</div>
+                </div>
+                <div class="block">
+                    <b>Welcome, Student!</b>
+                    <div class="line" style="width:40%"></div>
+                </div>
+                <div class="row">
+                    <div class="block">
+                        Schedules Today
+                        <div class="line"></div>
+                    </div>
+                    <div class="block">
+                        Upcoming Activities
+                        <div class="line"></div>
+                    </div>
+                    <div class="block">
+                        Next Reminder
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <div class="two">
+                    <section>
+                        <div class="block">
+                            <b>MY DAILY SCHEDULE</b>
+                            <div class="placeholder">Time — Activity — Location</div>
+                            <div class="placeholder">Time — Activity — Location</div>
+                            <div class="placeholder">Time — Activity — Location</div>
+                        </div>
+                        <div class="block">
+                            <b>ADD / EDIT SCHEDULE FORM</b>
+                            <div class="placeholder">Activity title</div>
+                            <div class="placeholder">Date and start time</div>
+                            <div class="placeholder">End time and location</div>
+                            <div class="placeholder">Notes</div>
+                            <span class = "button" > Save Schedule </span>
+                        </div>
+                    </section>
+                    <aside>
+                        <divclass = "block" >
+                           <b> UPCOMING REMINDER </b>
+                           <divclass = "placeholder" > Activity begins in 15 minutes </div>
+                        </div>
+                       <divclass = "block" >
+                           <b> OTIFICATION SETTINGS </b>
+                           <divclass = "placeholder" > Enable browser notifications </div>
+                        </div>
+                    </aside>
+                </div>
+            </main>
+        </div>
+    </body>
+    <footer>
+  <p style="font-size:12px;color:#7180a3;text-align:center;margin:16px 0 0">@Student Daily Schedule</p>
+</footer>
+</html>
